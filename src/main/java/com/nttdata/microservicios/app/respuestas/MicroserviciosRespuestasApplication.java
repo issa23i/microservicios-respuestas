@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
 @EntityScan({"com.nttdata.microservicios.app.respuestas.models.entity",
-	"com.nttdata.microservicios.commons.alumnos.models.entity",
 	"com.nttdata.microservicios.commons.examenes.models.entity"})
 public class MicroserviciosRespuestasApplication {
 
