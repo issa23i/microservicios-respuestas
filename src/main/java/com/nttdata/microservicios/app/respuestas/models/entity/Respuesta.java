@@ -3,14 +3,15 @@ package com.nttdata.microservicios.app.respuestas.models.entity;
 import com.nttdata.microservicios.commons.alumnos.models.entity.Alumno;
 import com.nttdata.microservicios.commons.examenes.models.entity.Pregunta;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name="respuestas")
@@ -22,8 +23,11 @@ public class Respuesta {
 	
 	private String texto;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@Transient
 	private Alumno alumno;
+	
+	@Column(name="alumno_id")
+	private Long alumnoId;
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	private Pregunta pregunta;
@@ -58,6 +62,14 @@ public class Respuesta {
 
 	public void setPregunta(Pregunta pregunta) {
 		this.pregunta = pregunta;
+	}
+
+	public Long getAlumnoId() {
+		return alumnoId;
+	}
+
+	public void setAlumnoId(Long alumnoId) {
+		this.alumnoId = alumnoId;
 	}
 	
 	
